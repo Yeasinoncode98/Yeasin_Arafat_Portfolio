@@ -1,0 +1,895 @@
+/* ADDED: Enables smooth scrolling when clicking internal anchor links (e.g., #about-me) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Existing Custom CSS for Skill Tag positioning (from Yeasin's file) */
+.skill-tag {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Existing Keyframes for the circular dashed animation (from Yeasin's file) */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Existing: Keyframes for the Shaking Skill Card Animation */
+@keyframes shake-skill {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0) scale(1.05);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0) scale(1.05);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0) scale(1.05);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0) scale(1.05);
+    }
+}
+
+/* NEW: Keyframes for the Pulsing Border Glow Effect (Used for individual cards on hover) */
+@keyframes pulse-border-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(251, 191, 36, 0.4), 0 0 10px rgba(251, 191, 36, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 15px rgba(251, 191, 36, 0.8), 0 0 25px rgba(251, 191, 36, 0.6);
+    }
+}
+
+/* NEW: Keyframes for the Section Container Glow */
+@keyframes container-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(251, 191, 36, 0.3), 0 0 20px rgba(251, 191, 36, 0.1);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.6), 0 0 40px rgba(251, 191, 36, 0.4);
+    }
+}
+
+/* Apply the spin animation to the dashed circle */
+.animate-spin-20s {
+    animation: spin 20s linear infinite;
+}
+
+/* Existing Keyframes for the pulsing glow animation (Original Yellow/Primary) (from Yeasin's file) */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 5px rgba(251, 191, 36, 0.4), 0 0 10px rgba(251, 191, 36, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 10px rgba(251, 191, 36, 0.8), 0 0 20px rgba(251, 191, 36, 0.6);
+    }
+
+    100% {
+        box-shadow: 0 0 5px rgba(251, 191, 36, 0.4), 0 0 10px rgba(251, 191, 36, 0.2);
+    }
+}
+
+/* Existing Class for the Glowing/Animated Skill Tags (from Yeasin's file) */
+.glowing-skill {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 700;
+    background-image: linear-gradient(to right, #FBBF24, #F59E0B, #EA580C);
+    color: #111827;
+    border: 2px solid #FBBF24;
+    box-shadow: 0 0 5px rgba(251, 191, 36, 0.4), 0 0 10px rgba(251, 191, 36, 0.2);
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Existing Keyframes for the pulsing COOL GREEN glow animation (from Yeasin's file) */
+@keyframes pulse-green-glow {
+    0% {
+        box-shadow: 0 0 5px rgba(16, 185, 129, 0.6), 0 0 10px rgba(16, 185, 129, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 10px rgba(52, 211, 163, 1), 0 0 20px rgba(16, 185, 129, 0.8);
+    }
+
+    100% {
+        box-shadow: 0 0 5px rgba(16, 185, 129, 0.6), 0 0 10px rgba(16, 185, 129, 0.3);
+    }
+}
+
+/* Existing Class for the Cool Green Glowing Skill Tags (from Yeasin's file) */
+.green-glowing-skill {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 700;
+    background-image: linear-gradient(to right, #10B981, #06B6D4);
+    color: #111827;
+    border: 2px solid #34D399;
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.6), 0 0 10px rgba(16, 185, 129, 0.3);
+    animation: pulse-green-glow 2s ease-in-out infinite;
+}
+
+/* NEW: Class for glowing border effect on hover for individual cards */
+.skill-card-glow:hover {
+    border-color: #FBBF24;
+    animation: pulse-border-glow 2s infinite ease-in-out;
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.8), 0 0 25px rgba(251, 191, 36, 0.6);
+    /* Keep glow strong */
+}
+
+/* NEW: Class for the overall Skill Section glowing container */
+.skill-section-container {
+    position: relative;
+    background-color: var(--background-dark);
+    /* Use the dark background variable */
+    border: 2px solid #FBBF24;
+    /* Primary color border */
+    border-radius: 1.5rem;
+    /* Large border radius */
+    padding: 2rem;
+    animation: container-glow 5s infinite ease-in-out;
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
+}
+
+/* Custom Styles for Vertical Dividers (Inspired by the new design) */
+.skill-category {
+    position: relative;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Only apply to the middle category to get separators on both sides */
+.skill-category:nth-child(2) {
+    border-left: 2px solid rgba(251, 191, 36, 0.5);
+    /* Glowing separator */
+    border-right: 2px solid rgba(251, 191, 36, 0.5);
+    /* Glowing separator */
+}
+
+/* Style for the first column's right border */
+.skill-category:nth-child(1) {
+    border-right: 2px solid rgba(251, 191, 36, 0.5);
+}
+
+/* Style for the last column's left border */
+.skill-category:nth-child(3) {
+    border-left: 2px solid rgba(251, 191, 36, 0.5);
+}
+
+
+/* Adjustments for smaller screens (no separators, single column layout) */
+@media (max-width: 1024px) {
+    .skill-section-container {
+        padding: 1rem;
+        border: none;
+        animation: none;
+        box-shadow: none;
+    }
+
+    .skill-category {
+        border-left: none !important;
+        border-right: none !important;
+        padding: 1rem 0;
+    }
+
+    /* Add horizontal divider for mobile/tablet separation */
+    .skill-category:not(:last-child) {
+        border-bottom: 2px dashed rgba(251, 191, 36, 0.3);
+    }
+}
+
+
+/* Project  */
+
+/* Custom styles for the gradient button and spinner */
+.gradient-button {
+    /* Using a vibrant blue/cyan gradient for the action buttons */
+    background-image: linear-gradient(to right, #06b6d4, #3b82f6);
+    /* Tailwind: from-cyan-500 to-blue-500 */
+    transition: all 0.3s ease;
+}
+
+.gradient-button:hover {
+    background-image: linear-gradient(to right, #0891b2, #2563eb);
+    /* Tailwind: from-cyan-600 to-blue-600 */
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.7);
+}
+
+/* Spinner animation */
+.spinner {
+    border-top-color: #f59e0b;
+    /* Primary color */
+    border-left-color: #f59e0b;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+/* Note: 'spin' keyframes are defined earlier in the document */
+
+
+/* Styles */
+
+/* This CSS is added to the head of your document or your main stylesheet 
+        to create the blinking effect on the dynamic text.
+    */
+.cursor {
+    /* Uses the 'after' pseudo-element to create the blinking vertical bar */
+    border-right: 0.1em solid;
+    animation:
+        blink 0.75s step-end infinite;
+}
+
+/* Define the blinking animation */
+@keyframes blink {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: currentColor;
+    }
+
+    /* Use the text color for the cursor */
+}
+
+
+
+/* Main Section Responsive Styles */
+
+/* Main Section Responsive Styles - FIXED VERSION */
+
+/* Base styles for all screens */
+main {
+    padding: 8rem 1rem 3rem !important;
+}
+
+main .max-w-7xl {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Mobile devices (up to 640px) */
+@media (max-width: 640px) {
+    main {
+        padding: 6rem 0.5rem 2rem !important;
+        margin-top: 0 !important;
+    }
+
+    main .max-w-7xl {
+        padding: 0 0.75rem !important;
+        max-width: 100% !important;
+    }
+
+    /* Grid layout fix */
+    main .grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+
+    /* Name and heading */
+    main h1 {
+        font-size: 2rem !important;
+        line-height: 2.5rem !important;
+        margin-bottom: 1rem !important;
+        text-align: center !important;
+    }
+
+    main h1 .text-primary {
+        display: inline !important;
+    }
+
+    /* Text container */
+    main .text-center {
+        text-align: center !important;
+        padding: 0 1rem;
+    }
+
+    /* Typewriter text */
+    main p.min-h-24 {
+        min-height: 6rem !important;
+        margin-top: 1.5rem !important;
+        padding: 0 0.5rem;
+    }
+
+    #typewriter-text {
+        font-size: 1.125rem !important;
+        line-height: 1.6 !important;
+        display: inline-block;
+    }
+
+    /* Buttons and social links container */
+    main .mt-8 {
+        margin-top: 2rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1.5rem !important;
+        width: 100%;
+    }
+
+    /* Download Resume button */
+    main a[href*="drive.google.com"] {
+        width: 90% !important;
+        max-width: 300px;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        font-size: 0.95rem !important;
+        padding: 0.875rem 1.5rem !important;
+    }
+
+    /* Social icons container */
+    main .flex.gap-4 {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 1.5rem !important;
+        width: 100%;
+    }
+
+    /* Social icons size */
+    main .w-9,
+    main .w-8,
+    main .w-10 {
+        width: 2.25rem !important;
+        height: 2.25rem !important;
+    }
+
+    /* Profile image section */
+    main .relative.flex {
+        height: 22rem !important;
+        min-height: 22rem !important;
+        margin-top: 2rem !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    /* Spinning border */
+    main .animate-spin-20s {
+        width: 15rem !important;
+        height: 15rem !important;
+        position: absolute;
+    }
+
+    /* Profile image container */
+    main .w-72 {
+        width: 13rem !important;
+        height: 13rem !important;
+    }
+
+    main .w-72 img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+    }
+
+    /* Hide skill tags on mobile */
+    .skill-tag {
+        display: none !important;
+    }
+}
+
+/* Small tablets (641px to 768px) */
+@media (min-width: 641px) and (max-width: 768px) {
+    main {
+        padding: 7rem 1rem 2rem !important;
+    }
+
+    main h1 {
+        font-size: 2.5rem !important;
+        line-height: 3rem !important;
+    }
+
+    #typewriter-text {
+        font-size: 1.35rem !important;
+    }
+
+    main .relative.flex {
+        height: 26rem !important;
+        min-height: 26rem !important;
+    }
+
+    main .animate-spin-20s {
+        width: 18rem !important;
+        height: 18rem !important;
+    }
+
+    main .w-72 {
+        width: 16rem !important;
+        height: 16rem !important;
+    }
+
+    .skill-tag {
+        font-size: 0.75rem;
+    }
+
+    .skill-tag div {
+        padding: 0.5rem 0.75rem !important;
+    }
+}
+
+/* Tablets (769px to 1023px) */
+@media (min-width: 769px) and (max-width: 1023px) {
+    main {
+        padding: 7rem 2rem 3rem !important;
+    }
+
+    main h1 {
+        font-size: 3rem !important;
+    }
+
+    #typewriter-text {
+        font-size: 1.5rem !important;
+    }
+
+    main .grid {
+        gap: 3rem !important;
+    }
+
+    main .relative.flex {
+        height: 30rem !important;
+        min-height: 30rem !important;
+    }
+}
+
+/* Landscape mobile fix */
+@media (max-width: 900px) and (orientation: landscape) {
+    main {
+        padding: 5rem 1rem 2rem !important;
+    }
+
+    main h1 {
+        font-size: 1.75rem !important;
+    }
+
+    main .relative.flex {
+        height: 18rem !important;
+        min-height: 18rem !important;
+    }
+
+    main .animate-spin-20s {
+        width: 13rem !important;
+        height: 13rem !important;
+    }
+
+    main .w-72 {
+        width: 11rem !important;
+        height: 11rem !important;
+    }
+}
+
+/* Extra small devices (up to 375px) */
+@media (max-width: 375px) {
+    main {
+        padding: 5.5rem 0.5rem 2rem !important;
+    }
+
+    main h1 {
+        font-size: 1.65rem !important;
+        line-height: 2.25rem !important;
+    }
+
+    #typewriter-text {
+        font-size: 1rem !important;
+    }
+
+    main a[href*="drive.google.com"] {
+        font-size: 0.875rem !important;
+        padding: 0.75rem 1.25rem !important;
+    }
+
+    main .w-9,
+    main .w-8,
+    main .w-10 {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+    main .animate-spin-20s {
+        width: 14rem !important;
+        height: 14rem !important;
+    }
+
+    main .w-72 {
+        width: 12.5rem !important;
+        height: 12.5rem !important;
+    }
+}
+
+/* Ensure proper text wrapping */
+main h1,
+main p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Prevent horizontal scroll */
+main {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+main * {
+    max-width: 100%;
+}
+
+
+
+
+/* Projects section css */
+
+/* Projects Section Scroll Animations */
+
+/* Fade in from bottom animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade in from left */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Fade in from right */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale in animation */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Rotate in animation */
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-5deg) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+/* Slide up with bounce */
+@keyframes slideUpBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Projects section styles */
+#projects {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background decoration */
+#projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(217, 119, 6, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+#projects>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* Title animation */
+#projects h2 {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+#projects h2 span {
+    display: inline-block;
+    background: linear-gradient(90deg, #f59e0b, #d97706, #f59e0b);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Project cards - initially hidden */
+#project-grid>div,
+#expanded-projects-container>div {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* Animate project cards when visible */
+.project-card-animate {
+    animation: slideUpBounce 0.6s ease-out forwards;
+}
+
+/* Stagger animation delays */
+.project-card-animate:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.project-card-animate:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.project-card-animate:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.project-card-animate:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.project-card-animate:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.project-card-animate:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+/* Project card hover effects */
+#project-grid>div,
+#expanded-projects-container>div {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#project-grid>div:hover,
+#expanded-projects-container>div:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(245, 158, 11, 0.3);
+}
+
+/* Image hover effects */
+#project-grid img,
+#expanded-projects-container img {
+    transition: transform 0.5s ease;
+}
+
+#project-grid>div:hover img,
+#expanded-projects-container>div:hover img {
+    transform: scale(1.15) rotate(2deg);
+}
+
+/* Tag animation on hover */
+#project-grid span,
+#expanded-projects-container span {
+    transition: all 0.3s ease;
+}
+
+#project-grid>div:hover span,
+#expanded-projects-container>div:hover span {
+    background: rgba(245, 158, 11, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Button animations */
+
+
+
+
+/* Button animations - FIXED VERSION */
+#view-all-button {
+    position: relative;
+    overflow: hidden;
+    opacity: 1;
+    /* CHANGED: Remove opacity 0 */
+    animation: fadeInUp 1s ease-out 0.8s forwards, pulse 2s infinite 2s;
+    /* COMBINED: Both animations */
+}
+
+#view-all-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+#view-all-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Pulse animation for button */
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 0 15px rgba(245, 158, 11, 0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading spinner */
+.spinner {
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/* Pulse animation for button */
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 0 15px rgba(245, 158, 11, 0);
+    }
+}
+
+#view-all-button {
+    animation: pulse 2s infinite;
+}
+
+/* Loading spinner */
+.spinner {
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+*/
+
+/* Card shimmer effect */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+#project-grid>div::before,
+#expanded-projects-container>div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(245, 158, 11, 0.1),
+            transparent);
+    transition: left 0.5s;
+}
+
+#project-grid>div:hover::before,
+#expanded-projects-container>div:hover::before {
+    left: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .project-card-animate {
+        animation: fadeInUp 0.5s ease-out forwards;
+    }
+}
