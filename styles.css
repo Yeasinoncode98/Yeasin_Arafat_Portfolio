@@ -893,3 +893,94 @@ main * {
         animation: fadeInUp 0.5s ease-out forwards;
     }
 }
+
+
+
+/* ............... */
+
+/* Mobile Skill Tags - FIXED VERSION */
+@media (max-width: 640px) {
+
+    /* REMOVE the display: none for skill tags */
+    .skill-tag {
+        display: block !important;
+        /* Changed from none to block */
+        position: absolute;
+        transform: translate(-50%, -50%);
+        font-size: 0.65rem;
+        /* Smaller text for mobile */
+        z-index: 10;
+    }
+
+    .skill-tag div {
+        padding: 0.4rem 0.6rem !important;
+        /* Smaller padding */
+        font-size: 0.65rem !important;
+        white-space: nowrap;
+    }
+
+    /* Adjust skill tag positions for mobile */
+    .skill-tag[style*="top: 25%; left: 20%"] {
+        top: 20% !important;
+        left: 15% !important;
+    }
+
+    .skill-tag[style*="top: 15%; left: 70%"] {
+        top: 10% !important;
+        left: 75% !important;
+    }
+
+    .skill-tag[style*="top: 30%; left: 95%"] {
+        top: 25% !important;
+        left: 92% !important;
+    }
+
+    .skill-tag[style*="top: 70%; left: 90%"] {
+        top: 75% !important;
+        left: 88% !important;
+    }
+
+    .skill-tag[style*="top: 95%; left: 65%"] {
+        top: 92% !important;
+        left: 60% !important;
+    }
+
+    .skill-tag[style*="top: 85%; left: 10%"] {
+        top: 88% !important;
+        left: 12% !important;
+    }
+
+    .skill-tag[style*="top: 50%; left: 5%"] {
+        top: 50% !important;
+        left: 8% !important;
+    }
+
+    /* Keep glowing animations */
+    .glowing-skill {
+        font-size: 0.65rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .green-glowing-skill {
+        font-size: 0.65rem;
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+/* Small tablets */
+@media (min-width: 641px) and (max-width: 768px) {
+    .skill-tag {
+        font-size: 0.75rem;
+    }
+
+    .skill-tag div {
+        padding: 0.5rem 0.75rem !important;
+    }
+}
+
+
+/* NEW - USE THIS */
+.skill-tag {
+    display: block !important;
+    /* Show tags on mobile */
+}
