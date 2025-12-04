@@ -632,99 +632,126 @@ main .max-w-7xl {
         height: 2.25rem !important;
     }
 
-    /* Profile image section */
+    /* Profile image section - FIXED CONTAINER */
     main .relative.flex {
-        height: 22rem !important;
-        min-height: 22rem !important;
+        height: 24rem !important;
+        min-height: 24rem !important;
         margin-top: 2rem !important;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
         position: relative;
+        width: 100% !important;
+        max-width: 24rem !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
 
-    /* Spinning border */
+    /* Spinning border - PERFECTLY CIRCULAR */
     main .animate-spin-20s {
-        width: 18rem !important;
-        height: 18rem !important;
-        position: absolute;
+        width: 20rem !important;
+        height: 20rem !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
-    /* Profile image container */
+    /* Profile image container - PERFECTLY CIRCULAR */
     main .w-72 {
-        width: 16rem !important;
-        height: 16rem !important;
+        width: 17.5rem !important;
+        height: 17.5rem !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
     main .w-72 img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover;
+        border-radius: 50% !important;
     }
 
-    /* MOBILE SKILL TAGS - CIRCULAR POSITIONING */
+    /* MOBILE SKILL TAGS - PERFECT CIRCULAR POSITIONING */
     .skill-tag {
         display: block !important;
-        position: absolute;
-        font-size: 0.6rem;
-        z-index: 15;
-        pointer-events: none;
+        position: absolute !important;
+        font-size: 0.65rem !important;
+        z-index: 20 !important;
+        pointer-events: auto !important;
     }
 
     .skill-tag div {
-        padding: 0.35rem 0.55rem !important;
-        font-size: 0.6rem !important;
-        white-space: nowrap;
-        border-radius: 0.5rem;
+        padding: 0.4rem 0.65rem !important;
+        font-size: 0.65rem !important;
+        white-space: nowrap !important;
+        border-radius: 0.5rem !important;
     }
 
-    /* Circular positioning around profile image - 8 positions */
-    /* Top */
+    /* Perfect circular positioning - Using trigonometry for exact circle */
+    /* Position 1: Top (0 degrees) */
     .skill-tag:nth-of-type(1) {
-        top: 8% !important;
+        top: 5% !important;
         left: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
-    /* Top Right */
+    /* Position 2: Top-Right (45 degrees) */
     .skill-tag:nth-of-type(2) {
-        top: 18% !important;
-        left: 82% !important;
+        top: 14.6% !important;
+        left: 85.4% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
-    /* Right */
+    /* Position 3: Right (90 degrees) */
     .skill-tag:nth-of-type(3) {
         top: 50% !important;
-        left: 92% !important;
+        left: 95% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
-    /* Bottom Right */
+    /* Position 4: Bottom-Right (135 degrees) */
     .skill-tag:nth-of-type(4) {
-        top: 82% !important;
-        left: 82% !important;
+        top: 85.4% !important;
+        left: 85.4% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
-    /* Bottom */
+    /* Position 5: Bottom (180 degrees) */
     .skill-tag:nth-of-type(5) {
-        top: 92% !important;
+        top: 95% !important;
         left: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
-    /* Bottom Left */
+    /* Position 6: Bottom-Left (225 degrees) */
     .skill-tag:nth-of-type(6) {
-        top: 82% !important;
-        left: 18% !important;
+        top: 85.4% !important;
+        left: 14.6% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
-    /* Left */
+    /* Position 7: Left (270 degrees) */
     .skill-tag:nth-of-type(7) {
         top: 50% !important;
-        left: 8% !important;
+        left: 5% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
-    /* Top Left */
+    /* Position 8: Top-Left (315 degrees) */
     .skill-tag:nth-of-type(8) {
-        top: 18% !important;
-        left: 18% !important;
+        top: 14.6% !important;
+        left: 14.6% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    /* Ensure glowing animations still work */
+    .glowing-skill,
+    .green-glowing-skill {
+        font-size: 0.65rem !important;
+        padding: 0.4rem 0.65rem !important;
     }
 
     /* Skill section adjustments */
@@ -781,24 +808,37 @@ main .max-w-7xl {
         height: 2rem !important;
     }
 
+    /* Smaller circle for extra small screens */
+    main .relative.flex {
+        height: 21rem !important;
+        min-height: 21rem !important;
+        max-width: 21rem !important;
+    }
+
     main .animate-spin-20s {
-        width: 16rem !important;
-        height: 16rem !important;
+        width: 17rem !important;
+        height: 17rem !important;
     }
 
     main .w-72 {
-        width: 14rem !important;
-        height: 14rem !important;
+        width: 15rem !important;
+        height: 15rem !important;
     }
 
-    /* Smaller skill tags for extra small screens */
+    /* Smaller skill tags */
     .skill-tag {
-        font-size: 0.55rem;
+        font-size: 0.6rem !important;
     }
 
     .skill-tag div {
-        padding: 0.3rem 0.5rem !important;
-        font-size: 0.55rem !important;
+        padding: 0.35rem 0.55rem !important;
+        font-size: 0.6rem !important;
+    }
+
+    .glowing-skill,
+    .green-glowing-skill {
+        font-size: 0.6rem !important;
+        padding: 0.35rem 0.55rem !important;
     }
 }
 
@@ -896,25 +936,27 @@ main .max-w-7xl {
     }
 
     main .relative.flex {
-        height: 18rem !important;
-        min-height: 18rem !important;
+        height: 20rem !important;
+        min-height: 20rem !important;
+        max-width: 20rem !important;
     }
 
     main .animate-spin-20s {
-        width: 15rem !important;
-        height: 15rem !important;
+        width: 16rem !important;
+        height: 16rem !important;
     }
 
     main .w-72 {
-        width: 13rem !important;
-        height: 13rem !important;
+        width: 14rem !important;
+        height: 14rem !important;
     }
 
     .skill-tag {
-        font-size: 0.65rem;
+        font-size: 0.65rem !important;
     }
 
     .skill-tag div {
         padding: 0.4rem 0.6rem !important;
+        font-size: 0.65rem !important;
     }
 }
